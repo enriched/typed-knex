@@ -1,4 +1,4 @@
-// Type definitions for Knex.js
+// Type definitions for knex.js
 // Project: https://github.com/tgriesser/knex
 // Definitions by: Qubo <https://github.com/tkQubo>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
@@ -9,26 +9,26 @@ import events = require('events');
 declare module knex {
 
     type Value = string | number | boolean | Date;
-    type ColumnName = string | Knex.Raw | Knex.QueryBuilder;
+    type ColumnName = string | Raw | QueryBuilder;
 
     interface KnexFactory {
         (config: Config): Knex;
     }
 
-    interface Knex extends Knex.QueryInterface {
-        (tableName?: string): Knex.QueryBuilder;
+    interface Knex extends QueryInterface {
+        (tableName?: string): QueryBuilder;
         VERSION: string;
         __knex__: string;
 
-        raw: Knex.RawBuilder;
-        transaction: <R>(transactionScope: ((trx: Knex.Transaction) => void)) => Promise<any>;
+        raw: RawBuilder;
+        transaction: <R>(transactionScope: ((trx: Transaction) => void)) => Promise<any>;
         destroy(callback: Function): void;
         destroy(): Promise<void>;
 
-        schema: Knex.SchemaBuilder;
+        schema: SchemaBuilder;
 
         client: any;
-        migrate: Knex.MigrationAPI;
+        migrate: MigrationAPI;
         seed: any;
         fn: any;
     }
@@ -458,6 +458,5 @@ declare module knex {
     }
 }
 
-var Knex: Knex.KnexFactory;
-export = Knex;
-
+declare var knex: knex.KnexFactory;
+export = knex;
