@@ -298,7 +298,9 @@ declare module knex {
     //
 
     interface SchemaBuilder {
+        withSchema(schemaName?: string): SchemaBuilder;
         createTable(tableName: string, callback: (tableBuilder: CreateTableBuilder) => any): Promise<void>;
+        createTableIfNotExists(tableName: string, callback: (tableBuilder: TableBuilder) => any): Promise<void>;
         renameTable(oldTableName: string, newTableName: string): Promise<void>;
         dropTable(tableName: string): Promise<void>;
         hasTable(tableName: string): Promise<boolean>;
