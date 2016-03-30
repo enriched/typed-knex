@@ -337,6 +337,7 @@ declare module knex {
         primary(columnNames: string[]): TableBuilder;
         index(columnNames: string[], indexName?: string, indexType?: string): TableBuilder;
         unique(columnNames: string[], indexName?: string): TableBuilder;
+        foreign(column: string): ColumnBuilder;
     }
 
     interface CreateTableBuilder extends TableBuilder {
