@@ -336,8 +336,10 @@ declare module knex {
         specificType(columnName: string, type: string): ColumnBuilder;
         primary(columnNames: string[]): TableBuilder;
         index(columnNames: string[], indexName?: string, indexType?: string): TableBuilder;
+        dropIndex(columns, indexName?: string);
         unique(columnNames: string[], indexName?: string): TableBuilder;
         foreign(column: string): ColumnBuilder;
+        dropForeign(columns: string, foreignKeyName?: string);
     }
 
     interface CreateTableBuilder extends TableBuilder {
@@ -356,16 +358,19 @@ declare module knex {
     }
 
     interface ColumnBuilder {
-        index(indexName?: string): ColumnBuilder;
+        index(indexName?: string, indexType?: string): ColumnBuilder;
         primary(): ColumnBuilder;
         unique(): ColumnBuilder;
         references(columnName: string): ReferencingColumnBuilder;
+        inTable(table: string);
         onDelete(command: string): ColumnBuilder;
         onUpdate(command: string): ColumnBuilder;
         defaultTo(value: Value | Raw): ColumnBuilder;
         unsigned(): ColumnBuilder;
         notNullable(): ColumnBuilder;
         nullable(): ColumnBuilder;
+        first(): ColumnBuilder;
+        after(field: string): ColumnBuilder;
         comment(value: string): ColumnBuilder;
     }
 
