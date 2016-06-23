@@ -166,7 +166,7 @@ declare module knex {
     interface Where extends WhereRaw, WhereWrapped, WhereNull {
         (object: Object): QueryBuilder;
         (columnName: string, value: Value): QueryBuilder;
-        (columnName: string, operator: string, value: Value): QueryBuilder;
+        (columnName: string, operator: string, value: Value | Value[]): QueryBuilder;
         (columnName: string, operator: string, query: QueryBuilder): QueryBuilder;
     }
 
