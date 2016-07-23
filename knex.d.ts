@@ -289,6 +289,7 @@ declare module knex {
     }
 
     interface Transaction extends QueryBuilder {
+        raw: RawQueryBuilder;
         commit: any;
         rollback: any;
     }
