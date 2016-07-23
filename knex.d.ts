@@ -239,7 +239,7 @@ declare module knex {
     // Raw
 
     interface Raw extends events.EventEmitter, ChainableInterface {
-        on(event: string, cb: (data: any) => any): Raw;
+        on(event: string, cb: (data: any) => any): this;
         wrap(before: string, after: string): Raw;
     }
 
