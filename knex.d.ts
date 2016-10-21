@@ -63,6 +63,7 @@ declare module knex {
         where: Where;
         andWhere: Where;
         orWhere: Where;
+        whereNot: Where;
         whereRaw: WhereRaw;
         whereWrapped: WhereWrapped;
         havingWrapped: WhereWrapped;
